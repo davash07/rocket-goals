@@ -1,0 +1,14 @@
+.toolbardemoBasicUsage md-toolbar md-icon.md-default-theme {
+  color: white; }
+.md-toolbar-tools{
+    background-color: rgb(52,152,219);
+}
+.color-circle{
+    color: rgb(52,152,219);
+
+        
+}
+.navBardemoBasicUsage md-content .ext-content {
+  padding: 50px;
+  margin: 20px;
+  background-color: #FFF2E0; }

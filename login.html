@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,300,600,700' type='text/css'>
+      <link rel="stylesheet" type="text/css" href="css/bootstrap-material-design.css">
+    <link href="css/login.css" rel='stylesheet' type='text/css' />
+</head>
+<body>
+ 
+     <div class="main">
+        <div class="login-form">
+            <h1>ROCKET GOALS</h1>
+            <div class="head">
+                <center>
+                <img src="images/user.png" class="" alt=""/>
+                    </center>
+            </div>
+            <form id="form_id" method="post" name="myform">
+                <div class='row'>
+              <div class='input-field col-sm-12'>
+                <input class='validate' type='text' name='usename' id='username' placeholder="Username" />
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='input-field col-sm-12'>
+                <input class='validate' type='password' name='password' id='password' placeholder="Password"/>
+                
+              </div>
+            </div>
+                    <center>
+              <div class='submit'>
+                  <a href="javascript:void(0)" type="submit" class="btn btn-raised btn-info" onclick="validate()">Login</a>
+                  
+            
+              </div>
+            </center>
+            </form>
+        </div>
+    </div>
+    
+    <div class="background"></div>   
+    <div id="animate-area"></div>
+    <div id="animate-area-two"></div>
+    <div id="animate-area-t"></div>
+    <div id="animate-rocket">
+        <div id="rocket">
+            <img src="images/rocket-off.png">
+        </div>
+        <div id="base">
+            <img src="images/base.png">
+        </div>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+    <script src="js/login.js"></script>
+
+</body>
+</html>
