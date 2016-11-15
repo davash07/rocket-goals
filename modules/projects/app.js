@@ -1,5 +1,21 @@
-(function(){
-    var app = angular.module('app',["firebase" ])
+
+(function() {
+  'use strict';
+    var app = angular.module('app',["ngMaterial", "firebase"])
+    app.controller('AppCtrl', AppCtrl);
+    function AppCtrl($scope) {
+    $scope.currentNavItem = 'page1';
+    };
+    
+    app.controller('AppCtrl', function($scope) {
+    $scope.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
+    'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
+    'WY').split(' ').map(function(state) {
+        return {abbrev: state};
+      });
+  })
+    
+    
     app.controller('appCtrl',function($scope, $firebase, $http){
     var ref = new Firebase("https://rocket-goals-development.firebaseio.com/project");
     var sync = $firebase(ref);
@@ -31,5 +47,10 @@
     $scope.ver=function(value){
         $scope.app=value;
     }
+    });
+    app.config(function($mdThemingProvider) {
+        $mdThemingProvider.theme('default')
+        .primaryPalette('blue')
+        .accentPalette('blue');
     });
 })();

@@ -6,7 +6,7 @@ function validate(){
 	if ( username == "Admin" && password == "Admin"){
 		alert ("Bienvenido "+ username);
         window.localStorage.setItem('', document.getElementById('username').value);
-		window.location = "modules/dashboard/dashboard.html"; //redirecting to other page
+		window.location = "dashboard/dashboard.html"; //redirecting to other page
 		return false;
 	}
 	else{

@@ -12,3 +12,41 @@
   padding: 50px;
   margin: 20px;
   background-color: #FFF2E0; }
+
+.caja{
+    margin-top: 15px;
+}
+.title-project{
+    margin-left: 10px;
+    font-size: 25px;
+}
+.title-team{
+    font-size: 25px;
+}
+.title-time{
+    font-size: 2rem;
+   
+}
+
+.rating{
+  color: #a9a9a9;
+  margin: 0;
+  padding: 0;
+}
+
+ul.rating {
+  display: inline-block;
+}
+
+.rating li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 1px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.rating .filled {
+  color: red;
+}
