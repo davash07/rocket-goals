@@ -2,55 +2,132 @@
 (function() {
   'use strict';
     var app = angular.module('app',["ngMaterial", "firebase"])
-    app.controller('AppCtrl', AppCtrl);
-    function AppCtrl($scope) {
-    $scope.currentNavItem = 'page1';
-    };
-    
-    app.controller('AppCtrl', function($scope) {
-    $scope.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
-    'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
-    'WY').split(' ').map(function(state) {
-        return {abbrev: state};
-      });
-  })
-    
-    
-    app.controller('appCtrl',function($scope, $firebase, $http){
-    var ref = new Firebase("https://rocket-goals-development.firebaseio.com/project");
-    var sync = $firebase(ref);
-    $scope.DB = sync.$asArray();
-    $scope.app={name:'' , description:'', start_date:'', end_date:'', picture:'', goals: '', team: '', customer:''};
-    $http.get('https://rocket-goals-development.firebaseio.com/goals.json').success(function (data) {
-   //enviamos los datos a la vista con el objeto $scope
-    $scope.goals = data;
-    });
-    $http.get('https://rocket-goals-development.firebaseio.com/team.json').success(function (data) {
-   //enviamos los datos a la vista con el objeto $scope
-    $scope.team = data;
-    });
-    $http.get('https://rocket-goals-development.firebaseio.com/customer.json').success(function (data) {
-   //enviamos los datos a la vista con el objeto $scope
-    $scope.customer = data;
-    });
-    $scope.add=function(){
-        $scope.DB.$add($scope.app);
-        $scope.app={name:'' , description:'', start_date:'', end_date:'', picture:'', goals: '', team: '', customer:''};
-    };
-    $scope.delete=function(item){
-        $scope.DB.$remove(item);
-    };
-    $scope.edit=function(value){
-        $scope.app=value;
-        $scope.DB.$remove(value)
-    };
-    $scope.ver=function(value){
-        $scope.app=value;
-    }
-    });
     app.config(function($mdThemingProvider) {
         $mdThemingProvider.theme('default')
         .primaryPalette('blue')
         .accentPalette('blue');
     });
+    app.controller('addData',addData);
+        function addData($http, $scope) {
+        var add = this;
+            $scope.example = {
+         value: new Date(2013, 9, 22)
+       };
+        add.info = addInfo;
+            
+        var database = firebase.database().ref('/project');
+        var storage = firebase.storage().ref('img')
+        $http.get('https://rocket-goals-development.firebaseio.com/customer/.json').success(function (data) {
+        $scope.customer = data;
+        });
+        $http.get('https://rocket-goals-development.firebaseio.com/rewards/.json').success(function (data) {
+        $scope.reward = data;
+        });
+        $http.get('https://rocket-goals-development.firebaseio.com/technology/.json').success(function (data) {
+        $scope.technology = data;
+        });
+        function addInfo(data) {
+            var file = $('#file').get(0).files[0];
+            storage.child(file.name).put(file).then(function() {          
+                storage.child(file.name).getDownloadURL().then(function (url) {
+                    database.push({
+                        name: data.name,
+                        description: data.description,
+                        start_date: data.start_date,
+                        end_date: data.end_date,
+                        picture: url,
+                        limit_bugs: data.limit_bugs,
+                        limit_date: data.limit_date
+                    })
+                })
+            })
+
+        }
+    }
+app.controller('appCtrl',function($scope, $firebase, $http){
+    var ref = new Firebase("https://rocket-goals-development.firebaseio.com/project");
+    var sync = $firebase(ref);
+    $scope.DB = sync.$asArray();
+    $scope.quantity = 5;
+    $http.get('https://rocket-goals-development.firebaseio.com/customer/.json').success(function (data) {
+        $scope.customer = data;
+        });
+    $scope.app={name:'' , description:'', start_date:'', end_date:'', picture:'', goals: '', team: '', customer:'', technology:'', bugs:'', item:''};
+    
+    $http.get('https://rocket-goals-development.firebaseio.com/customer/.json').success(function (data) {
+    $scope.customer = data;
+    });
+    $http.get('https://rocket-goals-development.firebaseio.com/technology/.json').success(function (data) {
+    $scope.technology = data;
+    });
+    $http.get('https://rocket-goals-development.firebaseio.com/user/.json').success(function (data) {
+    $scope.user = data;
+    });
+    });
+
+   
+    /*
+
+    app.controller('addData',
+            function ($scope, $filter) {
+
+            $scope.$watch('datevalue', function (val) {
+
+                $scope.result = $filter('date')(new Date(), );
+
+            }, true);
+        }
+    );
+    //
+   app.controller('appCtrl',function($scope, $firebase, $http){
+    var ref = new Firebase("https://rocket-goals-development.firebaseio.com/project");
+    var sync = $firebase(ref);
+    $scope.DB = sync.$asArray();
+    $scope.quantity = 5;
+    $http.get('https://rocket-goals-development.firebaseio.com/customer/.json').success(function (data) {
+        $scope.customer = data;
+        });
+    $scope.app={name:'' , description:'', start_date:'', end_date:'', picture:'', goals: '', team: '', customer:'', technology:'', bugs:'', item:''};
+    
+    $http.get('https://rocket-goals-development.firebaseio.com/customer/.json').success(function (data) {
+    $scope.customer = data;
+    });
+    $http.get('https://rocket-goals-development.firebaseio.com/technology/.json').success(function (data) {
+    $scope.technology = data;
+    });
+    $http.get('https://rocket-goals-development.firebaseio.com/user/.json').success(function (data) {
+    $scope.user = data;
+    });
+    });*/
 })();
+
+   /* app.controller('AppCtrl', AppCtrl);
+    function AppCtrl($scope) {
+    $scope.currentNavItem = 'page1';
+    };
+    app.controller('AppCtrl',function($scope, $firebase, $http){
+    var ref = new Firebase("https://rocket-goals-development.firebaseio.com/project");
+    var sync = $firebase(ref);
+    $scope.DB = sync.$asArray();
+    $scope.quantity = 5;
+    $http.get('https://rocket-goals-development.firebaseio.com/customer/.json').success(function (data) {
+        $scope.customer = data;
+        });
+    $scope.app={name:'' , description:'', start_date:'', end_date:'', picture:'', goals: '', team: '', customer:'', technology:'', bugs:'', item:''};
+    $http.get('https://rocket-goals-development.firebaseio.com/rewards/.json').success(function (data) {
+    $scope.reward = data;
+    });
+    $http.get('https://rocket-goals-development.firebaseio.com/customer/.json').success(function (data) {
+    $scope.customer = data;
+    });
+    $http.get('https://rocket-goals-development.firebaseio.com/technology/.json').success(function (data) {
+    $scope.technology = data;
+    });
+    $http.get('https://rocket-goals-development.firebaseio.com/user/.json').success(function (data) {
+    $scope.user = data;
+    });
+    });
+    */
+    
+        
+

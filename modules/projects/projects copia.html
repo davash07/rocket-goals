@@ -1,191 +1,46 @@
-<html lang="en" ng-app="app">
+<html lang="en" >
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../css/style.css">
-   <!-- style sheet -->
-    <link href="../../css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/bootstrap-material-design.css">
-    <link rel="stylesheet" type="text/css" href="../../css/ripples.min.css">
-    
-     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../font-awesome-4.3.0/css/font-awesome.min.css">
+    <!-- style sheet -->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
-    <!-- Material Design Bootstrap-->
-    <link href="../../css/mdb.min.css" rel="stylesheet">
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="../../js/tether.min.js"></script>
-
-    <!-- MDB core JavaScript
-    <script type="text/javascript" src="../../js/mdb.min.js"></script>
-    -->
-    <script src="../../js/jquery-3.1.1.min.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
-   <!-- <script src="../../js/material.js"></script>
-    <script src="../../js/ripples.min.js"></script>-->
-    
 </head>
-<body  ><!-- * -->
-<div class="container"> 
-<form ng-submit="add.info(data)"><!-- *  -->
-<div class="card caja" ng-controller="addData as add">
+<body>
+<div ng-controller="AppCtrl"  ng-app="app">
 
-    <!--Card content-->
-    <div class="card-block">
-            <div class="container">
-                <h3 class="card-title text-center">Project Info</h3>
-            <div class="col-sm-2 text-center fuente">
-                <div class="form-group">
-                    <input type="file" id="file" multiple="">
+  <md-content>
+    <md-toolbar class="md-hue-2">
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+            <img src="../../images/user.png" style="width:40px; margin-left:-12px; margin-top:-7px;">
+          <md-icon md-svg-icon="../../images/user.png"></md-icon>
+        </md-button>
+        <h2>
+          <span>ROCKET GOALS</span>
+        </h2>
+        <span flex="">
+          <label></label></span>
+        <md-button class="md-fab md-mini md-primary">
+          <md-icon><i class="fa fa-bell" style="font-size:25px;" aria-hidden="true"></i></md-icon>
+        </md-button>
+          <h2>
+          <span>SunDevs</span>
+        </h2>
+        <md-button class="md-icon-button" aria-label="More">
+          <img src="../../images/logo.png" style="width:50px; margin-top:-10px; margin-left:-12px;" >
+        </md-button>
+      </div>
+    </md-toolbar>
+</md-content>
 
-                <div class="input-group">
-                    <span class="input-group-btn input-group-sm">
-                        <button type="button" style="width:150px; height:150px" class="btn btn-fab btn-fab">
-                            <i style="font-size:100px" class="fa fa-plus"></i>
-                        </button>
-                    </span>
-                </div>
-                </div>
-            </div>
-            <div class="col-sm-9">
-                <div class="col-sm-12">
-                    <div class="md-form">
-                        <input type="text" id="form1" ng-model="data.name" placeholder="Project Name" class="form-control">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="md-form">
-                        <input type="date" id="form1" ng-model="data.start_date"  class="form-control">
-                       <!--<label id="fecha" > {{ datevalue | date : 'shortDate'}}</label>-->
-                    </div>
-
-                </div>
-                <div class="col-sm-6">
-                    <div class="md-form">
-                        <input type="date" id="form1" ng-model="data.end_date"  class="form-control">
-                    </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="md-form">
-                        <input type="text" id="form1" ng-model="data.description" placeholder="Description" class="form-control">
-                    </div>
-             
-            </div>     
-        </div>  
-    </div>
- </div>
-</div>
-    
-<div class="card caja">
-    
-    <!--Card content-->
-    <div class="card-block" ng-controller="appCtrl">
-            <div class="container">
-                <h3 class="card-title text-center">Customer</h3>
-                <div class="col-sm-10">
-                    <select ng-model="app.customer" ng-options="value.name for value in customer">
-                            <ng-options>{{value.picture}}</ng-options>
-                    </select>
-                </div>  
-            </div>
-    </div>
-</div>
-    
-<div class="card caja">
-    
-    <!--Card content-->
-    <div class="card-block">
-            <div class="container">
-                <h3 class="card-title text-center">Technology</h3>
-           
-                <div class="col-sm-12">
-                            <div class="col-sm-2" ng-repeat="value in techology">
-                                <img src="{{value.picture}}" width="20px">
-                                <label>{{value.name}}</label>
-                                
-                            </div>
-    
-                        
-                </div>  
-            </div>
-    </div>
-</div> 
-<div class="card caja">
-    
-    <!--Card content-->
-    <div class="card-block">
-            <div class="container">
-                <h3 class="card-title text-center">Team</h3>
-           
-                <div class="col-sm-10">
-                        <div >
-                            <fieldset class="form-group" ng-repeat="value in user">
-                                <label for="radio21"><img src="{{value.picture}}" width="80px"><span>{{value.name}}</span></label><br>
-                                <input name="group1" type="radio" id="radio21">
-                                
-                            </fieldset>
-    
-                    </div>     
-                </div>  
-            </div>
-    </div>
-</div>
-<div class="card caja">
-    
-    <!--Card content-->
-    <div class="card-block">
-            <div class="container">
-                <h3 class="card-title text-center">End Before off</h3>
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4">
-                    <div class="md-form">
-                        <input type="date" id="form1" ng-model="data.limit_date"  class="form-control">
-                       <!--<label id="fecha" > {{ datevalue | date : 'shortDate'}}</label>-->
-                    </div>
-
-                </div>
-                <div class="col-sm-4">
-                </div>
-            </div>
-    </div>
-</div>
-<div class="card caja">
-    
-    <!--Card content-->
-    <div class="card-block">
-            <div class="container">
-                <h3 class="card-title text-center">Limit Bugs</h3>
-           
-                <div class="col-sm-10">
-                    <div class="col-sm-12">
-                        <input type="number" ng-model="data.limit_bugs" min="0" max="150">
-                    </div>
-                </div>  
-            </div>
-    </div>
-</div>
-<div class="card caja">
-    
-    <!--Card content-->
-    <div class="card-block">
-            <div class="container">
-                <h3 class="card-title text-center">Rewards</h3>
-           
-                <div class="col-sm-10">
-                    <div ng-repeat="value in eward" >
-                        <img src="{{value.picture}}" width="80px">
-                        <p style="" >{{value.title}}</p>
-                        <textarea ng-model="app.rewards.description"  class="descripcion" style="" rows="4" cols="100" ></textarea>
-                    </div>         
-                </div>
-            </div>
-    </div>
-</div>
-    
-    <a type="button" style="width:100px" class="btn" ng-click="add()">Save</a>
-    <button type="submit"  class="btn btn-fab btn-fab-mini">
-        <i class="fa fa-send"></i>
-      </button>   
-     <!--
+                
+                
     <md-content class="md-padding" layout-padding layout-xs="column" layout="row">
             <div class="container">
                 <div class="row">
@@ -205,7 +60,7 @@
                                     <md-card-title-text style="text-align: left; margin-left:5%" >
                                         <span class="md-headline">Project Info</span>
                                         <!--<span class="md-headline">Project Info</span>
-                                        <span class="md-subhead">Large</span>
+                                        <span class="md-subhead">Large</span>-->
                                         <md-input-container class="md-block" flex-gt-xs>
                                             <label>Project Name</label>
                                             <input required ng-model="app.name">
@@ -228,12 +83,12 @@
                                              <md-input-container class="md-block" flex-gt-xs>
                                                  <label>End Project</label>
                                                  <md-datepicker ng-model="app.end_date"></md-datepicker>
-                                             </md-input-container>
+                                             </md-input-container>-->
                                         </div>
                                         <div style="margin-top: -40px;">
                                             <md-input-container class="md-block">
                                                 <label>Description</label>
-                                                <textarea ng-model="app.description" rows="2" md-select-on-focus></textarea><!-- md-maxlength="200"
+                                                <textarea ng-model="app.description" rows="2" md-select-on-focus></textarea><!-- md-maxlength="200"-->
                                              </md-input-container>
                                         </div>
                                         
@@ -302,7 +157,7 @@
                                     <md-card-title-text  >
                                         <span class="md-headline">Team</span>
                                         <!--<span class="md-headline">Project Info</span>
-                                        <span class="md-subhead">Large</span>
+                                        <span class="md-subhead">Large</span>-->
                                          <div layout-gt-xs="" >
                                             <div ng-repeat="value in user" >
                                                  <img src="{{value.picture}}" width="80px">
@@ -322,7 +177,7 @@
                                     <md-card-title-text  >
                                         <span class="md-headline">End Before Off</span>
                                         <!--<span class="md-headline">Project Info</span>
-                                        <span class="md-subhead">Large</span>
+                                        <span class="md-subhead">Large</span>-->
                                        
                                             <rzslider rz-slider-model="slider.value" rz-slider-options="slider.options"></rzslider>
                                       
@@ -338,11 +193,11 @@
                                     <md-card-title-text  >
                                         <span class="md-headline">Limit of Bugs</span>
                                         <!--<span class="md-headline">Project Info</span>
-                                        <span class="md-subhead">Large</span>-
+                                        <span class="md-subhead">Large</span>-->
                                           <div layout-gt-xs="" >
                                           
                                             <!--    <md-slider flex="" class="md-primary" md-discrete="" ng-model="rating1" step="1" min="0" max="100" aria-label="rating"></md-slider>
-                                         -
+                                         -->
                                         </div>
                                                            
                                     </md-card-title-text>
@@ -356,8 +211,21 @@
                                     <md-card-title-text  >
                                         <span class="md-headline">Rewards</span>
                                         <!--<span class="md-headline">Project Info</span>
-                                        <span class="md-subhead">Large</span>-
-                                         
+                                        <span class="md-subhead">Large</span>-->
+                                         <div ng-repeat="value in reward" >
+                                             <div class="col-sm-2" style="" >
+                                                <md-input-container class="md-block" flex-gt-xs>
+                                                    <img src="{{value.picture}}" width="80px">
+                                                    <p style="" >{{value.title}}</p>
+                                                </md-input-container>
+                                             </div>
+                                             <div class="col-sm-9" style="margin-top:25px">
+                                                 
+                                                    <textarea ng-model="app.rewards.description"  class="descripcion" style="" rows="4" cols="100" ></textarea>
+                                             </div>
+                                             
+                                                
+                                            </div>         
                                     </md-card-title-text>
                                 </md-card-title>
                             </md-card> 
@@ -376,43 +244,17 @@
                 
                 
                 
--->   
-    </form>
+            
 </div>
-
-
-<!-- Dropdown.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
-<script src="https://cdn.rawgit.com/FezVrasta/dropdown.js/master/jquery.dropdown.js"></script>
-
-<script src="https://code.jquery.com/jquery-3.1.0.min.js" 
-integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
-<!-- AngularJs -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-<script src="https://cdn.firebase.com/libs/angularfire/0.9.2/angularfire.min.js"></script>
-    <script src="https://use.fontawesome.com/5b3b0d1d00.js"></script>
     
+    <script type="text/javascript" src="../../js/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script> 
+    <script type="text/javascript" src="/js/apifirebase.js"></script>
+    <script src="https://use.fontawesome.com/5b3b0d1d00.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/0.9.2/angularfire.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.min.js"></script>
-    <script src="../../node_modules/angular-animate/angular-animate.min.js"></script>
-    <script src="../../node_modules/angular-aria/angular-aria.min.js"></script>
-    
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
     <script src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.1/angular-material.js"></script>
-<!-- Agregamos Firebase a nuestra aplicación -->
-<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDj8y8lgJoDAmxHFzoO1xAexjRPyEsAgqg",
-    authDomain: "rocket-goals-development.firebaseapp.com",
-    databaseURL: "https://rocket-goals-development.firebaseio.com",
-    storageBucket: "rocket-goals-development.appspot.com",
-  };
-  firebase.initializeApp(config);
-</script>
-
-<!-- Enlazamos nuestro archivo con el módulo de angular -->    
-<script src="app.js"></script>
     </body>
 </html>

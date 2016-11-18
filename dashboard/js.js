@@ -2,9 +2,8 @@
  
     var rating = function( method, options ) {
 		method = method || 'create';
-        // This is the easiest way to have default options.
+
         var settings = $.extend({
-            // These are the defaults.
 			limit: 5,
 			value: 4,
 			glyph: "glyphicon-heart",
@@ -24,21 +23,17 @@
 		
 		if (method == 'create')
 		{
-			//this.html('');	//junk whatever was there
-			
-			//initialize the data-rating property
+
 			this.each(function(){
 				attr = $(this).attr('data-rating');
 				if (attr === undefined || attr === false) { $(this).attr('data-rating',settings.value); }
 			})
 			
-			//bolt in the glyphs
 			for (var i = 0; i < settings.limit; i++)
 			{
 				this.append('<span data-value="' + (i+1) + '" class="ratingicon glyphicon ' + settings.glyph + '" style="' + style + '" aria-hidden="true"></span>');
 			}
 			
-			//paint
 			this.each(function() { paint($(this)); });
 
 		}
@@ -51,7 +46,7 @@
 		{
 			return this.attr('data-rating');
 		}
-		//register the click events
+
 		this.find("span.ratingicon").click(function() {
 			rating = $(this).attr('data-value')
 			$(this).parent().attr('data-rating',rating);
@@ -61,8 +56,8 @@
 		function paint(div)
 		{
 			rating = parseInt(div.attr('data-rating'));
-			div.find("input").val(rating);	//if there is an input in the div lets set it's value
-			div.find("span.ratingicon").each(function(){	//now paint the stars
+			div.find("input").val(rating);	
+			div.find("span.ratingicon").each(function(){	
 				
 				var rating = parseInt($(this).parent().attr('data-rating'));
 				var value = parseInt($(this).attr('data-value'));

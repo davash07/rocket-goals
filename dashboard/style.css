@@ -1,3 +1,8 @@
+.labeldate{
+    font-size: 12px;
+     
+}
+
 .toolbardemoBasicUsage md-toolbar md-icon.md-default-theme {
   color: white; }
 .md-toolbar-tools{
@@ -49,4 +54,10 @@ ul.rating {
 
 .rating .filled {
   color: red;
+}
+.text-description{
+    margin-top: -60px;
+}
+#customer-box{
+    margin-left: 50px;
 }

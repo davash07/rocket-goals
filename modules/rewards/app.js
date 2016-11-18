@@ -1,23 +1,34 @@
+(function () {
+    'use strict'
 
-(function(){
-    var app = angular.module('app',["firebase" ])
-    app.controller('appCtrl',function($scope, $firebase){
-    var ref = new Firebase("https://rocket-goals-development.firebaseio.com/rewards")
-    var sync = $firebase(ref);
-    $scope.DB = sync.$asArray();
-    $scope.app={name:'', description:'', picture:''};
-    $scope.add=function(){
-        $scope.DB.$add($scope.app);
-        $scope.app={name:'', description:'', picture:''};
-    };
-    $scope.delete=function(item){
-    $scope.DB.$remove(item);
-        
-  };
-    $scope.ver=function(value){
-        $scope.app=value;
-    };
-});
-  
+    angular
+        .module('app',[])
+        .controller('addData',addData);
+
+    function addData() {
+        var add = this;
+
+        add.info = addInfo;
+
+        // Hacemos referecia al storage y la base de datos
+        var database = firebase.database().ref('/rewards');
+        var storage = firebase.storage().ref('img')
+
+        function addInfo(data) {
+            var file = $('#file').get(0).files[0];
+            //agregamos la imagen al storage
+            storage.child(file.name).put(file).then(function() {
+                //obtenemos la url de descarga de la imagen
+                storage.child(file.name).getDownloadURL().then(function (url) {
+                    //agregamos la url a nuestra objeto y lo agregamos a firebase
+                    database.push({
+                        title : data.title,
+                        picture: url
+                    })
+                })
+            })
+
+        }
+    }
+
 })();
-

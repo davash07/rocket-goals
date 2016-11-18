@@ -1,4 +1,3 @@
-
 (function() {
   'use strict';
     var app = angular.module('app',["ngMaterial", "firebase"])
@@ -7,12 +6,12 @@
     $scope.currentNavItem = 'page1';
   };
     app.controller('appCtrl',function($scope, $firebase){
-    var ref = new Firebase("https://rocket-goals-development.firebaseio.com/user/");
+    var ref = new Firebase("https://rocket-goals-development.firebaseio.com/project/");
     var sync = $firebase(ref);
     $scope.DB = sync.$asArray();
-    $scope.bugs = 30;
-    $scope.rating3 = 50;
-    $scope.appp={last_name:'', name:'', nickname:'', rol:'', bugs:''};
+    $scope.bugs = 6;
+    $scope.rating1 = 50;
+    $scope.appp={ name:'', picture:'', limit_bugs:''};
    
     });
     app.config(function($mdThemingProvider) {
