@@ -5,22 +5,19 @@
     function AppCtrl($scope) {
     $scope.currentNavItem = 'page1';
   };
-    app.controller('appCtrl',function($scope, $firebase){
-    var ref = new Firebase("https://rocket-goals-development.firebaseio.com/project/");
-    var sync = $firebase(ref);
-    $scope.DB = sync.$asArray();
-    $scope.bugs = 6;
-    $scope.rating1 = 50;
-    $scope.appp={ name:'', picture:'', limit_bugs:''};
-   
-    });
     app.config(function($mdThemingProvider) {
         $mdThemingProvider.theme('default')
         .primaryPalette('blue')
         .accentPalette('blue');
     });
-    app.controller('AppCtrl', function($scope) {
+    app.controller('AppCtrl', function($scope, $firebase) {
     $scope.rating = 8;
+    var ref = new Firebase("https://rocket-goals-development.firebaseio.com/project/");
+    var sync = $firebase(ref);
+    $scope.DB = sync.$asArray();
+    $scope.bugs = 6;
+    $scope.rating1 = 50;
+   
   })
   app.directive('starRating',
 	function() {
