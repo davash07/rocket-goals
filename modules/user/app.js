@@ -8,27 +8,25 @@
     $scope.app={nickname:'', name:'', last_name:'', picture:'', rol:'', tech: '', social_network:''};
     $http.get('https://rocket-goals-development.firebaseio.com/technology.json').success(function (data) {
     $scope.technology = data;
+    var storage = firebase.storage().ref('img')
  });
     $scope.add=function(){
+        var file = $('#file').get(0).files[0];
+        storage.child(file.name).put(file).then(function() {
+                //obtenemos la url de descarga de la imagen
+                storage.child(file.name).getDownloadURL().then(function (url) {
+                })
+            })
         $scope.DB.$add($scope.app);
-        $scope.app={nickname:'', name:'', last_name:'', picture:'', rol:'', tech: '', social_network:''};
+        $scope.app={nickname:'', name:'', last_name:'', picture: url , rol:'', tech: '', social_network:''};
     };
     $scope.delete=function(item){
     $scope.DB.$remove(item);
   };
-    $scope.views=function(value){
-        if (checkbox == true){
-            $firebase.call($asArry);
-            $http.post('https://rocket-goals-development.firebaseio.com/technology.json').finally().catch;
-        }else{
-            $scope.$apply.DB.image_url('{{value.picture}}');
-        }
-        
-    }
     $scope.ver=function(value){
         $scope.app=value;
     };
 });
   
 })();
-
+    

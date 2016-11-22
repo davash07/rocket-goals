@@ -2,25 +2,39 @@
 
     $.fn.rating = function (method, options) {
         method = method || 'create';
-        // This is the easiest way to have default options.
+
         var settings = $.extend({
-            // These are the defaults.
-            limit: 13,
-            value: 0,
-            glyph: "glyphicon-heart",
+
+            limit: 5,
+            value: 2,
+            glyph: "glyphicon-star",
             coloroff: "gray",
-            coloron: "red",
-            size: "1.2em",
+            coloron: "gold",
+            size: "1.3em",
+            cursor: "pointer",
+            onClick: function () {
+            },
+            endofarray: "idontmatter"
         }, options);
         var style = "";
         style = style + "font-size:" + settings.size + "; ";
         style = style + "color:" + settings.coloroff + "; ";
+        style = style + "cursor:" + settings.cursor + "; ";
 
 
         if (method == 'create') {
+
+            this.each(function () {
+                attr = $(this).attr('data-rating');
+                if (attr === undefined || attr === false) {
+                    $(this).attr('data-rating', settings.value);
+                }
+            });
+
             for (var i = 0; i < settings.limit; i++) {
                 this.append('<span data-value="' + (i + 1) + '" class="ratingicon glyphicon ' + settings.glyph + '" style="' + style + '" aria-hidden="true"></span>');
             }
+
             $('.ratingicon').mouseover(function () {
                 var starValue = $(this).data('value');
                 var ratingIcons = $('.ratingicon');
@@ -34,6 +48,7 @@
                     $(ratingIcons[i]).css('color', settings.coloroff);
                 }
             });
+
             //paint
             this.each(function () {
                 paint($(this));
@@ -49,11 +64,17 @@
         if (method == 'get') {
             return this.attr('data-rating');
         }
+
+        this.find("span.ratingicon").click(function () {
+            rating = $(this).attr('data-value');
+            $(this).parent().attr('data-rating', rating);
+            paint($(this).parent());
+            settings.onClick.call($(this).parent());
+        });
         function paint(div) {
             rating = parseInt(div.attr('data-rating'));
-            div.find("input").val(rating);	//if there is an input in the div lets set it's value
-            div.find("span.ratingicon").each(function () {	//now paint the stars
-
+            div.find("input").val(rating);
+            div.find("span.ratingicon").each(function () {	
                 var rating = parseInt($(this).parent().attr('data-rating'));
                 var value = parseInt($(this).attr('data-value'));
                 if (value > rating) {
@@ -64,5 +85,6 @@
                 }
             })
         }
+
     };
 }(jQuery));

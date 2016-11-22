@@ -6,13 +6,24 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../css/styleloader.css">
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script>var root = '{{root}}';</script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="bootstrap-star-rating.js"></script>   
+    <script src="../js/jsloader.js"></script>
 </head>
 <body>
+    <div class="se-pre-con">
+    <div id="circle_container">
+  <div id="stars"></div>
+  <div id="load_wrapper">
+    <div id="sun"></div>
+    <div id="moon"></div>
+  </div>
+</div>
+    </div>
+    
 <div ng-controller="AppCtrl"  ng-app="app">
   <md-content>
     <md-toolbar class="md-hue-2">
@@ -43,108 +54,26 @@
 </md-content>
   <md-content class="">
     <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation">
-      <md-nav-item md-nav-click="goto('page1')" name="page1" style="margin-left:40%;">Projects</md-nav-item>
-      <md-nav-item md-nav-click="goto('page2')" name="page2" style="margin-right: 40%;">personal goals</md-nav-item>
+      <md-nav-item md-nav-click="goto('page1')" onclick="projectgoals();" name="page1" style="margin-left:32%;">Projects</md-nav-item>
+      <md-nav-item md-nav-click="goto('page2')" onclick="personalgoals();" name="page2" style="">personal goals</md-nav-item>
+      <md-nav-item md-nav-click="goto('page3')" onclick="okrs();" name="page3" style="margin-right: 35%;">OKRs</md-nav-item>
     </md-nav-bar>
-      
     <div class="ext-content">
         <div class="container">
+           
+            <iframe id="iframe" src="projectsgoals/projectsgoals.html" allowfullscreen width="100%" height="100%">
             
-            <div ng-controller="AppCtrl">
-                    <div ng-repeat="value in DB" class="modal-content caja">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <img src="{{value.picture}}" style="width:80px; margin-top:20px"> <!--  {{value.picture}} -->
-                                   
-                                        <span class="title-project">{{value.name}}</span>
-                                          <div style=" margin-top:-30px; margin-left:90px">
-                                            <img src="{{value.technologyone}}" style="width:25px;">
-                                              <img src="{{value.technologytwo}}" style="width:25px;">
-                                              <img src="{{value.technologythree}}" style="width:25px;">
-                                          </div>
-                                    <span class="title-team">Team</span>
-                                <div style="">
-                                    <img src="{{value.teamone}}" style="width:50px;"><img src="{{value.teamtwo}}" style="width:50px;"><img src="{{value.teamthree}}" style="width:50px;">
-                                    </div>
-                            </div>
-                                <div class="col-sm-6">
-                                    <div class="col-sm-12" style="margin-top:10px">
-                                        <span class="title-time">Time</span>
-                                    </div>
-                                    
-                                <div style=" margin-top: 10px;">
-                                     <div class="col-sm-12">
-                                            <md-slider flex="" class="md-primary" md-discrete="" ng-model="value.limit_bugs" step="1" min="0" max="100" aria-label="rating"></md-slider>
-                                        </div>
-                                        <div class="col-sm-4" style="float:left; margin-left:-10px">
-                                            <span class="labeldate" >Start<br>{{value.start_date}}</span>
-                                        </div>
-                                        <div class="col-sm-4" style="margin-top:">
-                                            <center><span class="labeldate">medium<br>{{value.limit_date}}</span></center>
-                                        </div> 
-                                        <div class="col-sm-4" style="margin-top:px; margin-right:-140px; float:right;">
-                                            <span class="labeldate">End<br>{{value.end_date}}</span>
-                                        </div>
-                                    
-                                    <div>
-                                    
-                                    
-                                    
-                                    </div>
-                                        <div class="col-sm-12">
-                                            <br>
-                                            <span class="title-time">Lives</span>
-                                            <p>{{bugs}}/{{value.limit_bugs}}</p>
-                                        <div ng-init="rating = star.rating + "></div>
-                                        <div class="star-rating" star-rating rating-value="bugs" data-max="value.limit_bugs" on-rating-selected="rateFunction(rating)">
-                                        </div><br>
-                                    </div>
-    
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <center>
-                                    <img src="../images/dashboard.png" style="width:190px; margin-top:10px">
-                                    </center>
-                                    
-                                </div>
-                    
-                    </div>
-                    
-                </div>
-            
-          
-        </div>
+        
+</iframe>
+            </div> 
       
-            </div>
-<!--
-    <script type="text/javascript">
-          $(document).ready(function(){
-	           $("#stars-herats").rating('create',{
-                                        coloron:'red',
-                                        limit:31,
-                                        glyph:'glyphicon-heart'});	
-          });
-            </script>
-            -->
-            <script type="text/javascript">
-        var username = window.localStorage.getItem('');
-        if (!username) {
-            window.location.href = "../login.html";
-        }
-        function logout() {
-            window.localStorage.removeItem('');
-            window.location.href = "../login.html";
-        }
-</script>
-        </div>
         <br>
       </div>
   </md-content>
     </div>
+    <script src="../js/review.js"></script>
     <!-- AngularJs -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="../node_modules/angular/angular.min.js"></script>
     
 <!-- Agregamos Firebase a nuestra aplicación -->
 <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
@@ -166,5 +95,6 @@
     <script src="../node_modules/angular-animate/angular-animate.min.js"></script>
     <script src="../node_modules/angular-aria/angular-aria.min.js"></script>
     <script src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.1/angular-material.js"></script>
+    
     </body>
 </html>

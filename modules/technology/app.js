@@ -21,14 +21,13 @@
                 //obtenemos la url de descarga de la imagen
                 storage.child(file.name).getDownloadURL().then(function (url) {
                     //agregamos la url a nuestra objeto y lo agregamos a firebase
-                    database.push({
-                        name : data.name,
-                        picture: url
-                    })
+                   var nombreimagen = url;
                 })
+                
             })
 
         }
+       
     }
 
 })();

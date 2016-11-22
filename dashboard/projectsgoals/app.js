@@ -17,7 +17,10 @@
     var sync = $firebase(ref);
     $scope.DB = sync.$asArray();
     $scope.bugs = 6;
-
+    
+    $http.get('../apizoho.json').then(function(response) {
+      $scope.data = response.data;
+    });
   });
   app.directive('starRating',
 	function() {

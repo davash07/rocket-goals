@@ -17,8 +17,11 @@
     var sync = $firebase(ref);
     $scope.DB = sync.$asArray();
     $scope.bugs = 6;
-
-  });
+  /*  
+    $http.get('https://people.zoho.com/people/api/forms/P_TimesheetJobsList/getRecords?authtoken=6a701202eb76ebf85132b6ba39f6831d').then(function(response) {
+      $scope.data = response.data;
+    });
+  });*/
   app.directive('starRating',
 	function() {
 		return {

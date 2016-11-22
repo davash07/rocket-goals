@@ -18,8 +18,7 @@
 		style = style + "font-size:" + settings.size + "; ";
 		style = style + "color:" + settings.coloroff + "; ";
 		style = style + "cursor:" + settings.cursor + "; ";
-	
-
+        
 		
 		if (method == 'create')
 		{
@@ -57,15 +56,13 @@
 		{
 			rating = parseInt(div.attr('data-rating'));
 			div.find("input").val(rating);	
-			div.find("span.ratingicon").each(function(){	
-				
+			div.find("span.ratingicon").each(function(){
 				var rating = parseInt($(this).parent().attr('data-rating'));
 				var value = parseInt($(this).attr('data-value'));
 				if (value > rating) { $(this).css('color',settings.coloroff); }
 				else { $(this).css('color',settings.coloron); }
 			})
 		}
-
     };
 
 })();
