@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-    var app = angular.module('app',["ngMaterial", "firebase"])
+    var app = angular.module('app',["ngMaterial"])
     app.controller('AppCtrl', AppCtrl);
     function AppCtrl($scope) {
     $scope.currentNavItem = 'page1';
