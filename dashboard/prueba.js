@@ -7,8 +7,9 @@
     $scope.DB = sync.$asArray();
     $scope.bugs = 6;
 
-    $http.get('ejemplo.json').then(function(response) {
+    $http.get('apizoho.json').then(function(response) {
       $scope.info = response.data;
+
     });
         /*
     $http.jsonp('ejemplo.json', {jsonpCallbackParam: 'callback'}).then(function(response) {

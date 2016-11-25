@@ -1,26 +1,64 @@
 (function() {
   'use strict';
-    var app = angular.module('app',["ngMaterial", "firebase"])
+    var app = angular.module('app',["ngMaterial"])
     app.controller('AppCtrl', AppCtrl);
     function AppCtrl($scope) {
     $scope.currentNavItem = 'page1';
   };
+
     app.config(function($mdThemingProvider) {
         $mdThemingProvider.theme('default')
         .primaryPalette('blue')
         .accentPalette('blue');
     });
-    app.controller('AppCtrl', function($scope, $firebase, $http) {
+    app.controller('AppCtrl', function($scope, $http) {
     $scope.rating = 8;
-        
-    var ref = new Firebase("https://rocket-goals-development.firebaseio.com/project/");
-    var sync = $firebase(ref);
-    $scope.DB = sync.$asArray();
+    $scope.status = "true";
     $scope.bugs = 6;
-    
-    $http.get('../apizoho.json').then(function(response) {
-      $scope.data = response.data;
-    });
+    $scope.pro = {
+        height: "10px"
+    }
+
+	$scope.app={ClientId:'', Descripci_n:'', Fecha_retadora:'', Fin:'', Imagen_downloadUrl:'', Inicio:'', Project_Name:'' };
+    $scope.ver=function(value){
+    	$scope.app=value;
+	}
+    $scope.free={
+            width: "78%"
+        }
+    $scope.ver=function(value){
+        $scope.app=value;
+    };
+   $scope.urlsimgs= "&authtoken=6a701202eb76ebf85132b6ba39f6831d";
+    /*$http.get('https://people.zoho.com/people/api/forms/P_TimesheetJobsList/getRecords?authtoken=6a701202eb76ebf85132b6ba39f6831d').then(function(res) {
+        res.set('Access-Control-Allow-Origin', '*');
+    	$scope.info = res.data;
+    });*/
+    $http.get('https://people.zoho.com/people/api/forms/P_TimesheetJobsList/getRecords?authtoken=6a701202eb76ebf85132b6ba39f6831d',
+            {
+                headers: {
+                    'Content-Type': 'application/json' ,
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+                    'Access-Control-Allow-Headers':'X-Requested-With'
+                }
+            }).success(function(response) {
+            alert("Ok");
+        $scope.info = response.data;
+
+        }).
+        error(function (data) {
+            alert(JSON.stringify(data));
+            alert("No Conectado");
+        });
+
+
+/*
+
+    $http.get('https://trello.com/b/dsK7qEwD.json').success(function(value) {
+		$scope.trello = value;
+    });*/
+
   });
   app.directive('starRating',
 	function() {
@@ -36,7 +74,7 @@
 				max : '=',
 				onRatingSelected : '&'
 			},
-			link : function(scope, elem, attrs) {
+			link : function(scope) {
 				var updateStars = function() {
 					scope.stars = [];
 					for ( var i = 0; i < scope.max; i++) {
@@ -58,5 +96,3 @@
 	}
 );
 })();
-
-

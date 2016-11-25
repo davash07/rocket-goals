@@ -1,7 +1,7 @@
 <body> 
-      <div class="se-pre-con">
-    <div id="circle_container">
-  <div id="stars"></div>
+    <div class="se-pre-con">
+        <div id="circle_container">
+    <div id="stars"></div>
   <div id="load_wrapper">
     <div id="sun"></div>
     <div id="moon"></div>
@@ -11,32 +11,30 @@
     </div>
 <div ng-controller="AppCtrl" ng-app="app">
         <div ng-repeat="value in DB" class="modal-content caja">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="profile">
-                                     <img src="{{value.picture}}" style=""> <!--  {{value.picture}} -->
-                                   
-                                        <span class="title-project" onclick="detail()">{{value.name}}</span>
-                                    </div>
-                                   
-                                          <div class="technologys">
-                                            <img src="{{value.technologyone}}" >
-                                              <img src="{{value.technologytwo}}" >
-                                              <img src="{{value.technologythree}}">
-                                          </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="profile">
+                                <img src="{{value.picture}}" style=""> <!--  {{value.picture}} -->
+                                <span class="title-project" onclick="detail()">{{value.name}}</span>
+                            </div>
+                            <div class="technologys">
+                                <img src="{{value.technologyone}}" >
+                                <img src="{{value.technologytwo}}" >
+                                <img src="{{value.technologythree}}">
+                            </div>
                                     <span class="text-left"><h3>Team</h3></span>
-                                <div class="teamimg">
+                                 <div class="teamimg">
                                     <img class="img-circle"  src="{{value.teamone}}"><img  class="img-circle"  src="{{value.teamtwo}}" ><img class="img-circle"  src="{{value.teamthree}}" >
                                     <br><br>
-                                    </div>
-                            </div>
+                                  </div>
+                             </div>
                                 <div class="col-sm-6">
                                     <div class="col-sm-12" style="margin-top:10px">
                                         <span class="title-time">Time</span>
                                     </div>
                                     
-                                <div style=" margin-top: 10px;">
+                                    <div style=" margin-top: 10px;">
                                      <div class="col-sm-12">
                                             <md-slider flex="" class="md-primary" ng-disabled="true" md-discrete ng-model="value.limit_bugs" step="1" min="0" max="100" aria-label="rating"></md-slider>
                                         </div>

@@ -1,8 +1,9 @@
 .labeldate{
     font-size: 12px;
-     
 }
-
+.backgroundbody{
+    background-color: transparent;
+}
 .toolbardemoBasicUsage md-toolbar md-icon.md-default-theme {
   color: white; }
 .md-toolbar-tools{
@@ -21,14 +22,16 @@
     margin-top: 15px;
 }
 .title-project{
-
-    margin-left: 10px;
-    font-size: 30px;
+    margin-top: 40px;
+    font-size: 20px;
 }
 .title-team{
     font-size: 25px;
 }
 .title-time{
+    margin-top: 30px;
+}
+.title-time p{
     font-size: 2rem;
    
 }
@@ -61,25 +64,33 @@ ul.rating {
 #customer-box{
     margin-left: 50px;
 }
-.teamimg img{
-    height:50px; 
-    width:50px;
-    box-shadow: 0px 0px 6px #636363;
-    margin-left: 10px;
+.technology img{
+    height:40px; 
+    width:40px;
+    margin-left: 2px;
 }
-.technologys{
-    margin-top:-40px;
-    margin-left:90px;
-}
+
 .technologys img{
-    width: 30px;
+    width: 10px;
     margin-left: 2px;
 }
 .profile img{
-    width:80px; 
-    margin-top:20px;
+    width:120px; 
+    margin-top:40px;
+    border-radius: 5px 5px 5px;
+    box-shadow: 0px 0px 4px #626262;
 }
 iframe{
     border-radius: 10px 10px 10px 10px;
     border-color: transparent;
+}
+.buttondtl{
+    margin-top: 10px;
+    background-color: rgb(52,152,219);
+    color: aliceblue;
+    width: 100px;
+    box-shadow: 0px 0px 4px #626262;
+}
+.sliderbarpro{
+    margin-top: -25px;
 }
