@@ -10,12 +10,8 @@
         .primaryPalette('blue')
         .accentPalette('blue');
     });
-    app.controller('AppCtrl', function($scope, $firebase, $http) {
+    app.controller('AppCtrl', function($scope) {
     $scope.rating = 8;
-        
-    var ref = new Firebase("https://rocket-goals-development.firebaseio.com/project/");
-    var sync = $firebase(ref);
-    $scope.DB = sync.$asArray();
     $scope.bugs = 6;
 
   });

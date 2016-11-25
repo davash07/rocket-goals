@@ -1,6 +1,5 @@
 (function() {
-  'use strict';
-    var app = angular.module('app',["ngMaterial"])
+    var app = angular.module('app',["ngMaterial"]);
     app.controller('AppCtrl', AppCtrl);
     function AppCtrl($scope) {
     $scope.currentNavItem = 'page1';
@@ -19,7 +18,7 @@
         height: "10px"
     }
 
-	$scope.app={ClientId:'', Descripci_n:'', Fecha_retadora:'', Fin:'', Imagen_downloadUrl:'', Inicio:'', Project_Name:'' };
+	$scope.app={ClientId:'', Description:'', Fecha_retadora:'', Fin:'', Imagen_downloadUrl:'', Inicio:'', Project_Name:'' };
     $scope.ver=function(value){
     	$scope.app=value;
 	}
@@ -30,10 +29,11 @@
         $scope.app=value;
     };
    $scope.urlsimgs= "&authtoken=6a701202eb76ebf85132b6ba39f6831d";
-    /*$http.get('https://people.zoho.com/people/api/forms/P_TimesheetJobsList/getRecords?authtoken=6a701202eb76ebf85132b6ba39f6831d').then(function(res) {
+ /*
+   $http.get('https://people.zoho.com/people/api/forms/P_TimesheetJobsList/getRecords?authtoken=6a701202eb76ebf85132b6ba39f6831d').then(function(res) {
         res.set('Access-Control-Allow-Origin', '*');
     	$scope.info = res.data;
-    });*/
+    });
     $http.get('https://people.zoho.com/people/api/forms/P_TimesheetJobsList/getRecords?authtoken=6a701202eb76ebf85132b6ba39f6831d',
             {
                 headers: {
@@ -51,13 +51,10 @@
             alert(JSON.stringify(data));
             alert("No Conectado");
         });
-
-
-/*
-
-    $http.get('https://trello.com/b/dsK7qEwD.json').success(function(value) {
-		$scope.trello = value;
-    });*/
+ */
+        $http.get('apizoho.json').then(function(response) {
+                $scope.info = response.data;
+            });
 
   });
   app.directive('starRating',
@@ -93,6 +90,6 @@
 				);
 			}
 		};
-	}
-);
+		});
+
 })();
