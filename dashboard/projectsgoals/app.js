@@ -52,7 +52,7 @@
             alert("No Conectado");
         });
  */
-        $http.get('apizoho.json').then(function(response) {
+        $http.get('../apizoho.json').then(function(response) {
                 $scope.info = response.data;
             });
 

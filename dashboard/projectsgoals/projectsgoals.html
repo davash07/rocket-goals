@@ -8,7 +8,7 @@
                         <div class="col-sm-12">
                             <div class="col-sm-6">
                                 <div class="profile">
-                                    <img src="{{data.Imagen_downloadUrl}}{{urlsimgs}}">
+                                    <img src="{{data.Imagen_downloadUrl}}{{urlsimgs}} ">
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -54,17 +54,15 @@
                             </div>
                         </div>
                         <div class="">
-
-                            <div class="col-sm-12 sliderbarpro">
-                                <md-slider flex="" class="md-primary" ng-disabled="true" md-discrete ng-model="data.Limite_Bugs" step="1" min="0" max="100" aria-label="rating"></md-slider>
-                            </div>
-                            <div class="col-sm-4" style="float:left; margin-left:-10px">
+                            <div class="col-sm-6" style="float:left; margin-left:-10px">
                                 <span class="labeldate" >Start <br>{{data.Inicio}}</span>
                             </div>
+                            <!--
                             <div class="col-sm-4" style="">
                                 <span class="labeldate">medium<br>{{data.Fecha_retadora}}</span>
                             </div>
-                            <div class="col-sm-4" style="margin-right:-70px; float:right;">
+                            -->
+                            <div class="col-sm-6" style="text-align:right; float:right;">
                                 <span class="labeldate">End<br>{{data.Fin}}</span>
                             </div>
                             <div class="col-sm-12">
