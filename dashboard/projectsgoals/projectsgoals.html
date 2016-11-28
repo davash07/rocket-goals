@@ -1,22 +1,28 @@
+<!-- -->
+
 <body class="backgroundbody">
+
 <div class="container">
     <div ng-controller="AppCtrl" ng-app="app">
-        <div ng-repeat="data in info" class="modal-content caja">
+        <div ng-repeat="data in info " ng-if="data.Rocket_Dashboard === 'true'" class="modal-content caja">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="col-sm-12">
                             <div class="col-sm-6">
                                 <div class="profile">
-                                    <img src="{{data.Imagen_downloadUrl}}{{urlsimgs}} ">
+                                    <!--<img src="{{data.Image_downloadUrl}}{{urlsimgs}}">-->
+                                   <img ng-src="{{data.image_downloadUrl == null && '../../images/plus.png' || (data.image_downloadUrl + urlsimgs)}} ">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <p class="title-project">{{data.Project_Name}}</p>
                                 <div class="technology">
-                                    <img src="../../images/dinner.png"><img src="../../images/dinner.png">
+                                    <img ng-src="{{data.Image_2_downloadUrl == null && '../../images/profile.jpg' || '../../images/plus.png'}}">
+                                    <img ng-src="{{data.Image_3_downloadUrl == null && '../../images/profile.jpg' || '../../images/plus.png'}}">
+                                    <img ng-src="{{data.Image_4_downloadUrl == null && '../../images/profile.jpg' || '../../images/plus.png'}}">
                                 </div>
-                                  <a class=" btn buttondtl" href="" ng-click="ver(data)">Detail</a>
+                                <a class=" btn buttondtl" data-toggle="modal" data-target="#ModalVer" ng-click="ver(data)">Detail</a>
                             </div>
                         </div>
                     </div>
@@ -55,15 +61,18 @@
                         </div>
                         <div class="">
                             <div class="col-sm-6" style="float:left; margin-left:-10px">
-                                <span class="labeldate" >Start <br>{{data.Inicio}}</span>
+                                <span class="labeldate" id="fecha_inicial" >{{data.Inicio}}</span>
+                                <p id="myDiv"></p>
+                                <p id="total"></p>
                             </div>
-                            <!--
+
+
                             <div class="col-sm-4" style="">
-                                <span class="labeldate">medium<br>{{data.Fecha_retadora}}</span>
+                                <span class="labeldate" id="fecha_reto">{{data.Fecha_retadora}}</span>
                             </div>
-                            -->
+
                             <div class="col-sm-6" style="text-align:right; float:right;">
-                                <span class="labeldate">End<br>{{data.Fin}}</span>
+                                <span class="labeldate" id="fecha_final">{{data.Fin}}</span>
                             </div>
                             <div class="col-sm-12">
                                 <br>
@@ -86,7 +95,8 @@
     </div>
 </div>
 
-<!-- -->
+
+<script src="operator.js"></script>
 <link rel="stylesheet" href="../../css/styleloader.css">
 <link rel="stylesheet" href="../style.css">
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
