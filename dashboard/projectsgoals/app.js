@@ -34,28 +34,28 @@
         res.set('Access-Control-Allow-Origin', '*');
     	$scope.info = res.data;
     });
-    $http.get('https://people.zoho.com/people/api/forms/P_TimesheetJobsList/getRecords?authtoken=6a701202eb76ebf85132b6ba39f6831d',
-            {
-                headers: {
-                    'Content-Type': 'application/json' ,
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
-                    'Access-Control-Allow-Headers':'X-Requested-With'
-                }
-            }).success(function(response) {
-            alert("Ok");
-        $scope.info = response.data;
 
+ */
+ 	$http.get('../apizoho.json').then(function(response) {
+ 		$scope.info = response.data;
+	});
+ 	$http.get('https://people.zoho.com/people/api/forms/P_TimesheetJobsList/getRecords?authtoken=6a701202eb76ebf85132b6ba39f6831d',
+		{
+			headers: {
+				'Content-Type': 'application/json' ,
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+				'Access-Control-Allow-Headers':'X-Requested-With'
+			}
+		}).success(function(response) {
+            alert("Ok");
+        	alert(JSON.stringify(data));
+            $scope.info = response.data;
         }).
         error(function (data) {
             alert(JSON.stringify(data));
             alert("No Conectado");
         });
- */
-        $http.get('../apizoho.json').then(function(response) {
-                $scope.info = response.data;
-            });
-
   });
   app.directive('starRating',
 	function() {
