@@ -37,8 +37,17 @@
     });
 
  */
- 	$http.get('../apizoho.json').then(function(response) {
- 		$scope.info = response.data;
+
+ 	$scope.listOfCustomers = null;
+ 	$http.get('https://people.zoho.com/people/api/forms/P_TimesheetJobsList/getRecords?authtoken=6a701202eb76ebf85132b6ba39f6831d')
+            .success(function (data) {
+                $scope.listOfCustomers = data;
+            })
+            .error(function () {
+                alert("no conectado");
+            });
+ 	$http.get('../apizoho.json').success(function(data) {
+ 		$scope.info = data;
 	});
  	$scope.ver=function(value){
 		$scope.app=value;

@@ -1,4 +1,3 @@
-<!-- -->
 
 <body class="backgroundbody">
 
@@ -12,17 +11,17 @@
                             <div class="col-sm-6">
                                 <div class="profile">
                                     <!--<img src="{{data.Image_downloadUrl}}{{urlsimgs}}">-->
-                                   <img ng-src="{{data.image_downloadUrl == null && '../../images/plus.png' || (data.image_downloadUrl + urlsimgs)}} ">
+                                   <img ng-src="{{data.image_downloadUrl == null && '../../images/profile.jpg' || (data.image_downloadUrl + urlsimgs)}} ">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <p class="title-project">{{data.Project_Name}}</p>
                                 <div class="technology">
-                                    <img ng-src="{{data.Image_2_downloadUrl == null && '../../images/profile.jpg' || '../../images/plus.png'}}">
-                                    <img ng-src="{{data.Image_3_downloadUrl == null && '../../images/profile.jpg' || '../../images/plus.png'}}">
-                                    <img ng-src="{{data.Image_4_downloadUrl == null && '../../images/profile.jpg' || '../../images/plus.png'}}">
+                                    <img ng-src="{{data.Image_2_downloadUrl == null && '../../images/profile.jpg' || (data.Image_2_downloadUrl + urlsimgs)}}">
+                                    <img ng-src="{{data.Image_3_downloadUrl == null && '../../images/profile.jpg' || (data.Image_3_downloadUrl + urlsimgs)}}">
+                                    <img ng-src="{{data.Image_4_downloadUrl == null && '../../images/profile.jpg' || (data.Image_4_downloadUrl + urlsimgs)}}">
                                 </div>
-                                <a class=" btn buttondtl" data-toggle="modal" data-target="#ModalVer" ng-click="ver(data)">Detail</a>
+                                <a class=" btn buttondtl"  data-toggle="modal" data-target="#ModalVer" ng-click="ver(data)">Detail</a>
                             </div>
                         </div>
                     </div>
@@ -33,6 +32,7 @@
                                     <h2 class=" ">{{app.Project_Name}}</h2>
                                 </div>
                                 <div class="modal-body ">
+
                                     <p  class="card-text text-center font-detail">{{app.ClientId}}</p>
                                 </div>
                                 <div class="card-footer text-muted ">
@@ -44,6 +44,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-sm-5">
                         <div class="col-sm-12 title-time" >
                             <p class="">Time</p>
@@ -119,6 +120,10 @@
                     </div>
                     <div class="col-sm-3">
                         <img src="../../images/estadouno.png" style="width:200px; margin-bottom:25%; margin-top: 25%">
+                        <div ng-repeat="customer in data">
+                            <h2>{{customer.response.result}}</h2>
+                        </div>
+                        <select ng-model="selectedCustomer" ng-options="customer for customer in listOfCustomers"></select>
                     </div>
                 </div>
             </div>
