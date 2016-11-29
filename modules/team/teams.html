@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="app"> 
+    <head>
+    <script type="text/javascript" src="../../js/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+    
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css">
+  </head>
+  <body ng-controller="appCtrl">
+  <div class="container">    
+      <!-- Modal ver --> 
+    <div id="ModalVer" class="modal fade " role="dialog">
+      <div class="modal-dialog ">
+          <div class="modal-content card">
+      <div class="modal-header">
+          <center>
+                <h3 class="card-heade ">{{app.title}}</h3>
+        </center>
+        </div>
+        <div class="modal-body ">
+            <p  class="card-text text-center font-detail">{{app.description}}</p>
+            <p  class="card-text text-center font-detail">{{app.place}}</p>
+           <center><img onclick="javascript:this.width=450;this.height=338" ondblclick="javascript:this.width=100;this.height=80" src="{{app.image_url}}"  width="80px" heigth="80px"></center> 
+      </div>
+    <div class="card-footer text-muted ">
+        <center>
+            <p class="card-text text-center">{{app.date}}</p>
+        </center>
+        <br>
+    </div>
+      <div class="modal-footer">
+          <center>
+              <a data-dismiss="modal"><i style="font-size:20px" class="fa fa-stack-5x fa-times"></i></a>
+      
+          </center>
+        </div>
+      </div>
+        </div>
+      </div>
+    
+    <!---->
+      
+   </div>
+    <script src="https://use.fontawesome.com/5b3b0d1d00.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/js/mdb.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.9.2/angularfire.min.js"></script>
+    <script src="../../node_modules/angular-material/angular-material.js"></script>
+</body>
+</html>

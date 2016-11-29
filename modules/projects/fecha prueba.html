@@ -1,0 +1,99 @@
+<html lang="en" ng-app="app">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="../../js/jquery-3.1.1.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+
+</head>
+<body  ><!-- * -->
+<div class="container"> 
+<form ng-controller="appCtrl"><!-- *  -->
+
+<div class="card caja">
+    
+    <!--Card content-->
+    <div class="card-block">
+            <div class="container">
+                <h3 class="card-title text-center">End Before off</h3>
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <div class="md-form">
+                    {{datavalue | date: 'shortDate'}}
+                        <input type="date" ng-model="app.datetime"> 
+                        <label accesskey="">ingresar fecha</label>
+                       <!--<label id="fecha" > {{ datevalue | date : 'shortDate'}}</label>-->
+
+                        <input type="date" class="form1"  ng-model="fecha" name="id" data-date-format="mm/dd/yyyy" maxlength="10" id="id" calendar maxdate="todays">
+                        <input type="text" ng-model="app.fecha">
+                        <div class="input-group">
+                                      <input type="text" name="date1" id="date1" class="form-control" data-select="date" placeholder="Salida">
+                                      <span class="input-group-btn">
+                                      <button class="btn btn-primary" type="button" data-toggle="select"><i class="fa fa-calendar"></i></button>
+                                      </span></div>
+                           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.12/jquery.mousewheel.js"></script> 
+<script src="../../js/jquery.dateselect.js"></script>
+<script>
+jQuery(document).ready(function($) {
+			$('.btn-date').on('click', function(e) {
+				e.preventDefault();
+				$.dateSelect.show({
+					element: 'input[name="date2"]'
+				});
+			});
+		});
+</script>
+                        
+                        
+                        <div id="example" >
+                                
+                                <div class="demo-section k-content">
+                                    <div>
+                                        
+                                        <pre >
+                                            FECHA: {{fecha}}
+                                        </pre>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                </div>
+            </div>
+    </div>
+</div>
+    <button type="buttom" ng-click="add()"  class="btn btn-fab btn-fab-mini">
+        enviar
+      </button>   
+
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js" 
+integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+<!-- AngularJs -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.9.2/angularfire.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.min.js"></script>
+    <script src="../../node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="../../node_modules/angular-aria/angular-aria.min.js"></script>
+    
+    <script src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.1/angular-material.js"></script>
+<!-- Agregamos Firebase a nuestra aplicación -->
+<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDj8y8lgJoDAmxHFzoO1xAexjRPyEsAgqg",
+    authDomain: "rocket-goals-development.firebaseapp.com",
+    databaseURL: "https://rocket-goals-development.firebaseio.com",
+    storageBucket: "rocket-goals-development.appspot.com",
+  };
+  firebase.initializeApp(config);
+</script>
+
+<!-- Enlazamos nuestro archivo con el módulo de angular -->    
+<script src="fecha.js"></script>
+    </body>
+</html>

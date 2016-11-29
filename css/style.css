@@ -1,0 +1,81 @@
+
+
+.card-color{
+    background-color: #252427;
+    box-shadow: 2px 2px 5px #626262;
+}
+.text-card{
+    color: rgb(128, 124, 124);
+    box-shadow: 2px 2px 22px #Fff;
+    
+}
+.text-card:hover{
+    color: rgb(255, 255, 255);
+    box-shadow: 2px 2px 22px #Fff;
+}
+.nav-color{
+    background-color: rgb(255, 255, 255);
+}
+.font-detail{
+    font-size: 16px;
+}
+.top-list{
+   font-size:17px;
+}
+.alineacion{
+    margin-top:30px;
+}
+
+.toolbardemoBasicUsage md-toolbar md-icon.md-default-theme {
+  color: white; }
+.md-toolbar-tools{
+    background-color: rgb(52,152,219);
+}
+.color-circle{
+    color: rgb(52,152,219);
+
+        
+}
+.navBardemoBasicUsage md-content .ext-content {
+  padding: 50px;
+  margin: 20px;
+  background-color: #FFF2E0; }
+
+.caja{
+    box-shadow: 0px 0px 15px #636363;
+    margin-top: 15px;
+}
+.descripcion{
+    background-color: rgba(98, 98, 98, 0.1);
+    border-radius: 5px;
+    border: #000;
+    color: #626262;
+}
+
+.fuente a{
+    font-size: 140px;
+}
+.fuente span{
+    font-size: 20px;
+}
+
+.checkboxdemoSelectAll .demo-legend {
+  color: #3F51B5; }
+
+.checkboxdemoSelectAll .demo-fieldset {
+  border-style: solid;
+  border-width: 1px;
+  height: 100%; }
+
+.checkboxdemoSelectAll .demo-select-all-checkboxes {
+  padding-left: 30px; }
+
+.datepickerdemoBasicUsage {
+  /** Demo styles for mdCalendar. */ }
+  .datepickerdemoBasicUsage md-content {
+    padding-bottom: 200px; }
+  .datepickerdemoBasicUsage .validation-messages {
+    font-size: 12px;
+    color: #dd2c00;
+    margin-left: 15px;
+  }
