@@ -12,17 +12,17 @@ app.config(function($routeProvider){
      controller : "infoController"
     })
 	.when("/add", {
-		title: 'Añadir usuario',
+		title: 'Añadir',
 		templateUrl : "templates/add.html",
 		controller : "addController"
 	})
 	.when("/edit/:id", {
-		title: 'Editar usuario',
+		title: 'Editar',
 		templateUrl : "templates/edit.html",
 		controller : "editController"
 	})
  	.when("/remove/:id", {
- 		title: 'Eliminar usuario',
+ 		title: 'Eliminar',
  		templateUrl : "templates/remove.html",
  		controller : "removeController"
  	})
